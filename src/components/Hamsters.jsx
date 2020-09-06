@@ -17,11 +17,16 @@ class Hamsters extends Component {
 
     render() {
         // passing props (an object) and we can destructur that props object sending the pieces of data the we have within the object props, what we want to pass. it has to be this.props;
-        const {name, color, age, hasWheel} = this.props;
-
+        
+        // const {name, color, age, hasWheel} = this.props;
+        
+        // after changed hasWheel to be handled by the method handleWheel(), we do not need hasWheel variable there, so we can remove it (check color compared to the other variables above):
+        const {name, color, age} = this.props;
+        
         return (
             // display all info in return: JSX expressions so all but strings must go within curly braces, like those variables we are passing: {name}, {age} (Flow of Data)
-            <div>
+            // Adding some bootstrap with card and btn (className is jsx version of html class)
+            <div className="card col-3 text-center">
                 <h2>{name}</h2>
                 <p>Fur Color: {color}</p>
                 <p>Age: {age}</p>
@@ -32,8 +37,8 @@ class Hamsters extends Component {
                 {/* Updated with the state instead of defined with the props because we are transfering the information from state now and not from props */}
                 <p>Has Wheel: {this.state.hasWheel ? "Yes" : "No"}</p>
 
-                {/* created a button and added a synthetic event listener (like event handlers in js, but these are methods created by React (jsx) and that mimic those in js) to handle interactivity of this button */}
-                <button onClick={ this.handleWheel }>Change Wheel State</button>
+                {/* created a button and added a synthetic event listener onClick(like event handlers in js, but these are methods created by React (jsx) and that mimic those in js) to handle interactivity of this button */}
+                <button className="btn btn-warning" onClick={ this.handleWheel }>Change Wheel State</button>
 
             </div>
         );
